@@ -12,33 +12,42 @@
 </head>
 
 <body>
+  <h1>Quiz App</h1>
+  <h2>Sprawdź wiedzę z zakresu:</h2>
+
+  <div class="category">
+    <button id="math">Matematyka</button>
+    <button id="geography">Geografia</button>
+    <button id="it">Informatyka</button>
+    <button id="music">Muzyka</button>
+  </div>
+
   <div class="quiz-container">
     <div class="quiz-header">
-      <h1>Quiz APP</h1>
-      <h2 id="question">Ile lat ma prezydent Duda?</h2>
-
+      <h2 id="question">Question</h2>
+      <img src="" alt="">
       <ul>
         <li>
-          <input type="radio" id="a" name="answer">
-          <label for="a" id="a-text">Prezydent ma 25 lat</label>
+          <input type="radio" id="a" name="answer" value="a">
+          <label for="a" id="a-text">Answer</label>
         </li>
         <li>
-          <input type="radio" id="b" name="answer">
-          <label for="b" id="b-text">Prezydent ma 53 lat</label>
+          <input type="radio" id="b" name="answer" value="b">
+          <label for="b" id="b-text">Answer</label>
         </li>
         <li>
-          <input type="radio" id="c" name="answer">
-          <label for="c" id="c-text">Prezydent ma 56 lat</label>
+          <input type="radio" id="c" name="answer" value="c">
+          <label for="c" id="c-text">Answer</label>
         </li>
         <li>
-          <input type="radio" id="d" name="answer">
-          <label for="d" id="d-text">Prezydent ma 11 lat</label>
+          <input type="radio" id="d" name="answer" value="d">
+          <label for="d" id="d-text">Answer</label>
         </li>
       </ul>
 
     </div>
 
-    <button>Kolejne pytanie</button>
+    <button id="submit">Kolejne pytanie</button>
   </div>
 
 
