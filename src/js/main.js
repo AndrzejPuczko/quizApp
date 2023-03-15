@@ -11,6 +11,10 @@ const img = document.querySelector('img')
 const math = document.querySelector('#math')
 const geography = document.querySelector('#geography')
 const internet = document.querySelector('#it')
+const music = document.querySelector('#music')
+const allCategories = document.querySelector('.category')
+const quizContainer = document.querySelector('.quiz-container')
+
 let currentQuiz = 0
 let score = 0
 
@@ -101,28 +105,44 @@ const it = [
 	},
 ]
 
+const musicData = [
+	{
+		question: 'MT1',
+		a: 'Prezydent ma 35 lat',
+		b: 'Prezydent ma 35 lat',
+		c: 'Prezydent ma 45 lat',
+		d: 'Prezydent ma 55 lat',
+		img: 'https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80',
+		correct: 'b',
+	},
+	{
+		question: 'M2',
+		a: '25',
+		b: '25',
+		c: '25',
+		d: '30',
+		img: '',
+		correct: 'b',
+	},
+	{
+		question: 'M3',
+		a: '25',
+		b: '25',
+		c: '25',
+		d: '30',
+		correct: 'b',
+	},
+]
+
 let currentQuizData
 
 function checkCategory(target) {
-	console.log(target)
 	deselect()
-	switch (target) {
-		case 'math':
-			currentQuizData = mathematic[currentQuiz]
-			loadElements(currentQuizData)
-			break
-		case 'geography':
-			currentQuizData = quizData[currentQuiz]
-			loadElements(currentQuizData)
-			break
-		case 'it':
-			currentQuizData = it[currentQuiz]
-			loadElements(currentQuizData)
-			break
-
-		default:
-			break
-	}
+	target === 'math' ? currentQuizData = mathematic[currentQuiz] : false
+	target === 'geography' ? currentQuizData = quizData[currentQuiz] : false
+	target === 'it' ? currentQuizData = it[currentQuiz] : false
+	target === 'music' ? currentQuizData = musicData[currentQuiz] : false
+	loadElements(currentQuizData)
 }
 
 function loadElements(currentQuizData) {
@@ -163,9 +183,12 @@ submitBtn.addEventListener('click', e => {
 	const category = document.querySelector('.active')
 	checkScore(category.id)
 })
-;[math, geography, internet].forEach(item => {
+;[math, geography, internet, music].forEach(item => {
 	item.addEventListener('click', ({ target }) => {
 		checkCategory(target.id)
 		item.classList.add('active')
+		allCategories.style.display = 'none'
+		quizContainer.style.display = 'flex'
+
 	})
 })
