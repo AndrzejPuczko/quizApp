@@ -12,8 +12,10 @@ const math = document.querySelector('#math')
 const geography = document.querySelector('#geography')
 const internet = document.querySelector('#it')
 const music = document.querySelector('#music')
-const allCategories = document.querySelector('.category')
+const allCategories = document.querySelector('.main__category')
 const quizContainer = document.querySelector('.quiz-container')
+
+const theme = document.querySelector('#toggle_checkbox')
 
 let currentQuiz = 0
 let score = 0
@@ -192,3 +194,11 @@ submitBtn.addEventListener('click', e => {
 
 	})
 })
+
+
+
+theme.addEventListener('click', () =>{
+	document.body.classList.toggle('redtheme')
+	console.log('blue');
+})
+

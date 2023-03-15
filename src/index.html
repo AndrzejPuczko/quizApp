@@ -6,51 +6,92 @@
   <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300;400;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/c022a609ca.js" crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz App</title>
 </head>
 
 <body>
-  <h1>Quiz App</h1>
-  <h2>Sprawdź wiedzę z zakresu:</h2>
+  <div class="wrapper">
 
-  <div class="category">
-    <button id="math">Matematyka</button>
-    <button id="geography">Geografia</button>
-    <button id="it">Informatyka</button>
-    <button id="music">Muzyka</button>
-  </div>
+    <div class="header">
+      <input type="checkbox" id="toggle_checkbox">
+      <label for="toggle_checkbox">
+        <div id="star">
+          <div class="star" id="star-1">★</div>
+          <div class="star" id="star-2">★</div>
+        </div>
+        <div id="moon"></div>
+      </label>
 
-  <div class="quiz-container">
-    <div class="quiz-header">
-      <h2 id="question">Question</h2>
-      <img src="" alt="">
-      <ul>
-        <li>
-          <input type="radio" id="a" name="answer" value="a">
-          <label for="a" id="a-text">Answer</label>
-        </li>
-        <li>
-          <input type="radio" id="b" name="answer" value="b">
-          <label for="b" id="b-text">Answer</label>
-        </li>
-        <li>
-          <input type="radio" id="c" name="answer" value="c">
-          <label for="c" id="c-text">Answer</label>
-        </li>
-        <li>
-          <input type="radio" id="d" name="answer" value="d">
-          <label for="d" id="d-text">Answer</label>
-        </li>
-      </ul>
-
+      <div class="header__title">
+        <h1>QuizApp <i class="fa-solid fa-flask"></i></h1>
+      </div>
     </div>
 
-    <button id="submit">Kolejne pytanie</button>
+
+
+    <div class="main">
+      <div class="circle">
+      </div>
+      <div class="circle__small"></div>
+
+      <div class="main__title">
+        <h2>WYBIERZ KATEGORIĘ:</h2>
+        <p>Każdy QUIZ składa się z 6 pytań.</p>
+      </div>
+
+
+      <div class="main__category">
+
+        <div class="main__category--math" id="math">
+
+          <div class="math-icon"><i class="fa-solid fa-square-root-variable"></i></div>
+          <div class="math-title">
+            <h2>Matematyka</h2>
+            <p>Costam costam</p>
+          </div>
+          <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
+
+        </div>
+
+
+        <!-- <button id="geography">Geografia</button>
+        <button id="it">Informatyka</button>
+        <button id="music">Muzyka</button> -->
+      </div>
+
+      <div class="quiz-container">
+        <div class="quiz-header">
+          <h2 id="question">Question</h2>
+          <img src="" alt="">
+          <ul>
+            <li>
+              <input type="radio" id="a" name="answer" value="a">
+              <label for="a" id="a-text">Answer</label>
+            </li>
+            <li>
+              <input type="radio" id="b" name="answer" value="b">
+              <label for="b" id="b-text">Answer</label>
+            </li>
+            <li>
+              <input type="radio" id="c" name="answer" value="c">
+              <label for="c" id="c-text">Answer</label>
+            </li>
+            <li>
+              <input type="radio" id="d" name="answer" value="d">
+              <label for="d" id="d-text">Answer</label>
+            </li>
+          </ul>
+
+        </div>
+
+        <button id="submit">Kolejne pytanie</button>
+      </div>
+    </div>
   </div>
-
-
 
 
   <script type="module" src="./js/main.js" defer></script>
