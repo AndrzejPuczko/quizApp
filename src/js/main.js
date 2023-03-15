@@ -103,34 +103,21 @@ const it = [
 
 let currentQuizData
 
-
-function loadQuiz() {
-	currentQuizData = quizData[currentQuiz]
-	loadElements(currentQuizData)
-}
-
-function loadQuiz2() {
-	currentQuizData = mathematic[currentQuiz]
-	loadElements(currentQuizData)
-}
-
-function loadQuizIt() {
-	currentQuizData = it[currentQuiz]
-	loadElements(currentQuizData)
-}
-
-
 function checkCategory(target) {
-	console.log(target.id)
-	switch (target.id) {
+	console.log(target)
+	deselect()
+	switch (target) {
 		case 'math':
-			loadQuiz2()
+			currentQuizData = mathematic[currentQuiz]
+			loadElements(currentQuizData)
 			break
 		case 'geography':
-			loadQuiz()
+			currentQuizData = quizData[currentQuiz]
+			loadElements(currentQuizData)
 			break
 		case 'it':
-			loadQuizIt()
+			currentQuizData = it[currentQuiz]
+			loadElements(currentQuizData)
 			break
 
 		default:
@@ -151,33 +138,25 @@ const checkScore = category => {
 	console.log(category)
 	answer.forEach(item => {
 		if (item.checked) {
-			console.log(currentQuizData)
+			console.log(category)
 			console.log(item.id)
 			if (item.id === currentQuizData.correct) {
 				score++
 			}
 			currentQuiz++
 			if (currentQuiz < quizData.length) {
-				switch (category) {
-					case 'math':
-						loadQuiz2()
-						break
-					case 'geography':
-						loadQuiz()
-						break
-					case 'it':
-						loadQuizIt()
-						break
-					default:
-						loadQuiz()
-						break
-				}
+				checkCategory(category)
 			} else {
-				console.log('koniec obiektyw')
+				console.log(`Trafiłeś ${score} / ${quizData.length} pytań`)
 				console.log(score)
+				submitBtn.style.display = 'none'
 			}
 		}
 	})
+}
+
+function deselect() {
+	answer.forEach(radio => (radio.checked = false))
 }
 
 submitBtn.addEventListener('click', e => {
@@ -185,8 +164,8 @@ submitBtn.addEventListener('click', e => {
 	checkScore(category.id)
 })
 ;[math, geography, internet].forEach(item => {
-    item.addEventListener('click', ({target}) => {
-        	checkCategory(target)
-        	item.classList.add('active')
-        })
+	item.addEventListener('click', ({ target }) => {
+		checkCategory(target.id)
+		item.classList.add('active')
+	})
 })
