@@ -1,4 +1,6 @@
 import '../scss/style.scss'
+import { geographyData, mathData, itData, musicData } from './_quizData'
+
 const questionEl = document.querySelector('#question')
 const a_text = document.querySelector('#a-text')
 const b_text = document.querySelector('#b-text')
@@ -10,140 +12,35 @@ const img = document.querySelector('img')
 
 const math = document.querySelector('#math')
 const geography = document.querySelector('#geography')
-const internet = document.querySelector('#it')
 const music = document.querySelector('#music')
+const it = document.querySelector('#it')
+
 const allCategories = document.querySelector('.main__category')
 const quizContainer = document.querySelector('.quiz-container')
+const questionNrText = quizContainer.querySelector('p:first-of-type')
+
+const headerTitle = document.querySelector('.header__title')
+const mainTitle = document.querySelector('.main__title')
+const result = document.querySelector('.result')
+const resultText = document.querySelector('.result-text')
+const progressBarText = document.querySelector('.progressbar__text')
+const restartBtn = document.querySelector('#restart')
+
+
+
 
 const theme = document.querySelector('#toggle_checkbox')
+const root = document.documentElement
 
 let currentQuiz = 0
 let score = 0
-
-const quizData = [
-	{
-		question: 'Ile lat ma prezydent ANdrzej?',
-		a: 'Prezydent ma 35 lat',
-		b: 'Prezydent ma 35 lat',
-		c: 'Prezydent ma 45 lat',
-		d: 'Prezydent ma 55 lat',
-		img: 'https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80',
-		correct: 'd',
-	},
-	{
-		question: 'how you feel123123?',
-		a: '25',
-		b: '25',
-		c: '25',
-		d: '30',
-		img: 'https://images.ctfassets.net/hrltx12pl8hq/1XHWt9mHWP7M57ESa6c21a/ec958aa9bbfdf8357c23c6954a096e2f/shutterstock_2248147783.jpg',
-		correct: 'a',
-	},
-	{
-		question: 'how you feel?',
-		a: '25',
-		b: '25',
-		c: '25',
-		d: '30',
-		correct: 'a',
-	},
-]
-
-const mathematic = [
-	{
-		question: 'Math1',
-		a: 'Prezydent ma 35 lat',
-		b: 'Prezydent ma 35 lat',
-		c: 'Prezydent ma 45 lat',
-		d: 'Prezydent ma 55 lat',
-		img: 'https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80',
-		correct: 'b',
-	},
-	{
-		question: 'Math2',
-		a: '25',
-		b: '25',
-		c: '25',
-		d: '30',
-		img: 'https://images.ctfassets.net/hrltx12pl8hq/1XHWt9mHWP7M57ESa6c21a/ec958aa9bbfdf8357c23c6954a096e2f/shutterstock_2248147783.jpg',
-		correct: 'b',
-	},
-	{
-		question: 'Math3',
-		a: '25',
-		b: '25',
-		c: '25',
-		d: '30',
-		correct: 'b',
-	},
-]
-
-const it = [
-	{
-		question: 'IT1',
-		a: 'Prezydent ma 35 lat',
-		b: 'Prezydent ma 35 lat',
-		c: 'Prezydent ma 45 lat',
-		d: 'Prezydent ma 55 lat',
-		img: 'https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80',
-		correct: 'b',
-	},
-	{
-		question: 'IT2',
-		a: '25',
-		b: '25',
-		c: '25',
-		d: '30',
-		img: '',
-		correct: 'b',
-	},
-	{
-		question: 'IT3',
-		a: '25',
-		b: '25',
-		c: '25',
-		d: '30',
-		correct: 'b',
-	},
-]
-
-const musicData = [
-	{
-		question: 'MT1',
-		a: 'Prezydent ma 35 lat',
-		b: 'Prezydent ma 35 lat',
-		c: 'Prezydent ma 45 lat',
-		d: 'Prezydent ma 55 lat',
-		img: 'https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80',
-		correct: 'b',
-	},
-	{
-		question: 'M2',
-		a: '25',
-		b: '25',
-		c: '25',
-		d: '30',
-		img: '',
-		correct: 'b',
-	},
-	{
-		question: 'M3',
-		a: '25',
-		b: '25',
-		c: '25',
-		d: '30',
-		correct: 'b',
-	},
-]
-
+let quizLength
 let currentQuizData
 
 function checkCategory(target) {
 	deselect()
-	target === 'math' ? currentQuizData = mathematic[currentQuiz] : false
-	target === 'geography' ? currentQuizData = quizData[currentQuiz] : false
-	target === 'it' ? currentQuizData = it[currentQuiz] : false
-	target === 'music' ? currentQuizData = musicData[currentQuiz] : false
+	quizLength = eval(target + 'Data')
+	currentQuizData = eval(target + 'Data[currentQuiz]')
 	loadElements(currentQuizData)
 }
 
@@ -154,51 +51,67 @@ function loadElements(currentQuizData) {
 	b_text.innerText = currentQuizData.b
 	c_text.innerText = currentQuizData.c
 	d_text.innerText = currentQuizData.d
+	questionNrText.textContent = `Pytanie ${currentQuiz +1} / ${quizLength.length}`
 }
 
 const checkScore = category => {
-	console.log(category)
 	answer.forEach(item => {
 		if (item.checked) {
-			console.log(category)
-			console.log(item.id)
 			if (item.id === currentQuizData.correct) {
 				score++
 			}
 			currentQuiz++
-			if (currentQuiz < quizData.length) {
+			if (currentQuiz < quizLength.length) {
 				checkCategory(category)
 			} else {
-				console.log(`Trafiłeś ${score} / ${quizData.length} pytań`)
-				console.log(score)
-				submitBtn.style.display = 'none'
+				showResult(score)
 			}
 		}
 	})
+}
+
+const showResult = score => {
+	calcProgresBar(score)
+	resultText.innerHTML = `Liczba poprawnych odpowiedzi to: <span>${score}</span>`
+
+	restartBtn.style.display = 'block'
+	result.style.display = 'flex'
+	quizContainer.style.display = 'none' // przeksztalcic na forEach
+	submitBtn.style.display = 'none'
+}
+
+const calcProgresBar = (score) => {
+	progressBarText.textContent = `${score} / ${quizLength.length}`
+	const progressBar = 440 - (440 * ((100 / quizLength.length) * score)) / 100;
+	root.style.setProperty('--progress-bar', progressBar)
+}
+
+const hideMenu = () => {
+	;[allCategories, headerTitle, mainTitle].forEach(item => {
+		item.style.display = 'none'
+	})
+	quizContainer.style.display = 'flex'
+	submitBtn.style.display = 'block'
 }
 
 function deselect() {
 	answer.forEach(radio => (radio.checked = false))
 }
 
-submitBtn.addEventListener('click', e => {
+submitBtn.addEventListener('click', () => {
 	const category = document.querySelector('.active')
 	checkScore(category.id)
 })
-;[math, geography, internet, music].forEach(item => {
+
+;[math, geography, it, music].forEach(item => {
 	item.addEventListener('click', ({ target }) => {
+		hideMenu()
 		checkCategory(target.id)
 		item.classList.add('active')
-		allCategories.style.display = 'none'
-		quizContainer.style.display = 'flex'
-
 	})
 })
 
-
-
-theme.addEventListener('click', () =>{
+theme.addEventListener('click', () => {
 	document.body.classList.toggle('redtheme')
-	console.log('blue');
+	console.log('blue')
 })
-
