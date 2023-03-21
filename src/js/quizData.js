@@ -128,7 +128,7 @@ export const itData = [
 		b: '10 GB',
 		c: '100 GB',
 		d: '1 TB',
-		img: './../img/quizData/it1.jpg',
+		img: './../img/quizData/it5.jpg',
 		correct: 'd',
 	},
 ]

@@ -12,7 +12,18 @@
 	--main: #fff;
 	--dark-font: #0f0f0f;
 	--dark-purple: #5b4dc1;
+	--background-radio: #e2def8;
+	--background: url('./../img/bg-light.svg');
 	--progress-bar: 410;
+}
+
+.dark-theme {
+	--main-purple: #1e223d;
+	--main: #353a65;
+	--dark-font: #f8f8f8;
+	--dark-purple: #353a65;
+	--background-radio: #837cae;
+	--background: url('./../img/bg-dark.svg');
 }
 
 html {
@@ -25,7 +36,7 @@ body {
 	align-items: center;
 	min-height: 100vh;
 	font-family: 'Roboto Flex', sans-serif;
-	background-image: linear-gradient(to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%);
+	background-image: var(--background);
 }
 
 .wrapper {
@@ -45,9 +56,9 @@ body {
 	&__title {
 		padding-top: 15px;
 		h1 {
+			padding: 8px 25px;
 			font-size: 3rem;
 			background: var(--dark-purple);
-			padding: 8px 25px;
 			border-radius: 15px;
 		}
 	}
@@ -129,7 +140,7 @@ body {
 	}
 
 	#toggle_checkbox:checked + label {
-		background-color: #2c2c2c;
+		background-color: #14182f;
 	}
 
 	#toggle_checkbox:checked + label #star {
@@ -148,7 +159,7 @@ body {
 	}
 
 	#toggle_checkbox:checked + label #moon:before {
-		background-color: #2c2c2c;
+		background-color: #14182f;
 	}
 }
 
@@ -157,8 +168,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: var(--main);
 	width: 97%;
+	background: var(--main);
 	border-radius: 30px;
 	z-index: 0;
 
@@ -192,17 +203,17 @@ body {
 			color: var(--dark-font);
 		}
 		p {
+			padding-top: 3px;
 			font-size: 1.3rem;
 			font-weight: 600;
-			padding-top: 3px;
 			color: #989899;
 		}
 	}
 
 	&__category {
+		position: relative;
 		display: flex;
 		flex-direction: column;
-		position: relative;
 		width: 90%;
 		cursor: pointer;
 
@@ -227,9 +238,9 @@ body {
 		}
 
 		&--it {
+			margin-bottom: 30px;
 			background: url('./../img/it.svg');
 			box-shadow: 0px 2px 1px 1px #756cd3;
-			margin-bottom: 30px;
 		}
 
 		&--math,
@@ -243,15 +254,15 @@ body {
 			margin-top: 20px;
 			width: 100%;
 			height: 80px;
-			border-radius: 25px;
 			background-size: cover;
 			background-position: center;
+			border-radius: 25px;
 
 			.category-title {
 				padding-left: 8%;
 				font-size: 1.4rem;
 				p {
-					font-size: 1rem;
+					font-size: 1.3rem;
 				}
 			}
 
@@ -279,9 +290,9 @@ body {
 			background: #99e8d7;
 		}
 		.fa-network-wired {
-			background: #a79feb;
-			font-size: 3.2rem;
 			padding: 15px 11px;
+			font-size: 3.2rem;
+			background: #a79feb;
 		}
 
 		.icon,
@@ -308,32 +319,33 @@ body {
 			margin-top: 20px;
 
 			li {
-				width: 100%;
 				display: block;
 				margin: 10px 0;
+				width: 100%;
 
 				input {
-					width: 100%;
 					display: none;
+					width: 100%;
 				}
 
 				label {
 					display: block;
 					padding: 10px 0;
 					width: 100%;
-					border: 1px solid #e5e3f1;
-					border-radius: 12px;
-					text-align: center;
 					font-size: 1.5rem;
 					font-weight: 700;
+					text-align: center;
+					border: 1px solid #e5e3f1;
+					border-radius: 12px;
+					cursor: pointer;
 				}
 
 				input[type='radio']:checked + label {
-					background-color: #e2def8;
+					background-color: var(--background-radio);
 				}
 
 				label:hover {
-					background-color: #e2def8;
+					background-color: var(--background-radio);
 				}
 			}
 		}
@@ -345,9 +357,8 @@ body {
 		}
 
 		img {
+			margin: 0 auto 10px;
 			width: 100%;
-			margin: 0 auto;
-			margin-bottom: 10px;
 			border-radius: 30px;
 		}
 	}
@@ -358,12 +369,12 @@ body {
 		width: 100%;
 		height: 70px;
 		border: none;
-		border-radius: 0px 0px 25px 25px;
-		color: #fff;
 		font-size: 20px;
+		color: #fff;
 		background: url('./../img/next.svg');
 		background-position: center;
 		background-size: cover;
+		border-radius: 0px 0px 25px 25px;
 		cursor: pointer;
 	}
 
@@ -371,17 +382,17 @@ body {
 		display: none;
 		flex-direction: column;
 		align-items: center;
-		color: var(--dark-font);
 		font-size: 2rem;
 		font-weight: 500;
+		color: var(--dark-font);
 
 		&-text {
 			margin-bottom: 30px;
 		}
 
 		span {
-			font-weight: bold;
 			font-size: 2.3rem;
+			font-weight: bold;
 		}
 
 		.container__progressbars {
@@ -390,9 +401,9 @@ body {
 			justify-content: space-around;
 			align-items: center;
 			flex-wrap: wrap;
+			margin-top: 20px;
 			min-width: 270px;
 			width: 100%;
-			margin-top: 20px;
 			scale: 0.8;
 		}
 
@@ -434,15 +445,13 @@ body {
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			font-size: 2.6rem;
 			padding: 0.25em 0.5em;
-			color: var(--main-purple);
+			font-size: 2.6rem;
 			font-family: Arial, Helvetica, sans-serif;
+			color: var(--main-purple);
 			border-radius: 0.25em;
 			transform: translate(-50%, -50%) rotate(90deg);
 		}
-
-		//  @keyframes
 
 		@keyframes anim_circle {
 			to {
@@ -465,12 +474,15 @@ body {
 	}
 }
 
-.redtheme {
-	background: red;
+@media (min-width: 601px) {
+	.wrapper {
+		margin-top: 30px;
+		min-width: 600px;
+		max-width: 620px;
+		min-height: 0;
+		background: none;
+	}
+	.main {
+		max-width: 600px;
+	}
 }
-
-// *********************
-
-// @function strokeDashoffset($num) {
-// 	@return 440 - (440 * $num) / 100;
-// }

@@ -1,5 +1,5 @@
 import '../scss/style.scss'
-import { geographyData, mathData, itData, musicData } from './_quizData'
+import { geographyData, mathData, itData, musicData } from './quizData'
 
 const questionEl = document.querySelector('#question')
 const a_text = document.querySelector('#a-text')
@@ -26,9 +26,6 @@ const resultText = document.querySelector('.result-text')
 const progressBarText = document.querySelector('.progressbar__text')
 const restartBtn = document.querySelector('#restart')
 
-
-
-
 const theme = document.querySelector('#toggle_checkbox')
 const root = document.documentElement
 
@@ -37,21 +34,21 @@ let score = 0
 let quizLength
 let currentQuizData
 
-function checkCategory(target) {
+const checkCategory = target => {
 	deselect()
 	quizLength = eval(target + 'Data')
 	currentQuizData = eval(target + 'Data[currentQuiz]')
 	loadElements(currentQuizData)
 }
 
-function loadElements(currentQuizData) {
+const loadElements = currentQuizData => {
 	questionEl.innerText = currentQuizData.question
 	img.setAttribute('src', currentQuizData.img)
 	a_text.innerText = currentQuizData.a
 	b_text.innerText = currentQuizData.b
 	c_text.innerText = currentQuizData.c
 	d_text.innerText = currentQuizData.d
-	questionNrText.textContent = `Pytanie ${currentQuiz +1} / ${quizLength.length}`
+	questionNrText.textContent = `Pytanie ${currentQuiz + 1} / ${quizLength.length}`
 }
 
 const checkScore = category => {
@@ -70,20 +67,21 @@ const checkScore = category => {
 	})
 }
 
-const showResult = score => {
-	calcProgresBar(score)
-	resultText.innerHTML = `Liczba poprawnych odpowiedzi to: <span>${score}</span>`
-
-	restartBtn.style.display = 'block'
-	result.style.display = 'flex'
-	quizContainer.style.display = 'none' // przeksztalcic na forEach
-	submitBtn.style.display = 'none'
+const calcProgressBar = score => {
+	progressBarText.textContent = `${score} / ${quizLength.length}`
+	const progressBar = 440 - (440 * ((100 / quizLength.length) * score)) / 100
+	root.style.setProperty('--progress-bar', progressBar)
 }
 
-const calcProgresBar = (score) => {
-	progressBarText.textContent = `${score} / ${quizLength.length}`
-	const progressBar = 440 - (440 * ((100 / quizLength.length) * score)) / 100;
-	root.style.setProperty('--progress-bar', progressBar)
+const showResult = score => {
+	calcProgressBar(score)
+	resultText.innerHTML = `Liczba poprawnych odpowiedzi to: <span>${score}</span>`
+	;[restartBtn, result].forEach(item => {
+		item.style.display = 'block'
+	})
+	;[quizContainer, submitBtn].forEach(item => {
+		item.style.display = 'none'
+	})
 }
 
 const hideMenu = () => {
@@ -94,14 +92,22 @@ const hideMenu = () => {
 	submitBtn.style.display = 'block'
 }
 
-function deselect() {
+const deselect = () => {
 	answer.forEach(radio => (radio.checked = false))
 }
 
-submitBtn.addEventListener('click', () => {
-	const category = document.querySelector('.active')
-	checkScore(category.id)
-})
+const restartQuiz = () => {
+	const activeQuiz = document.querySelector('.active')
+	activeQuiz.classList.remove('active')
+	;[allCategories, headerTitle, mainTitle].forEach(item => {
+		item.style.display = 'block'
+	})
+	;[quizContainer, submitBtn, restartBtn, result].forEach(item => {
+		item.style.display = 'none'
+	})
+	score = 0
+	currentQuiz = 0
+}
 
 ;[math, geography, it, music].forEach(item => {
 	item.addEventListener('click', ({ target }) => {
@@ -111,7 +117,13 @@ submitBtn.addEventListener('click', () => {
 	})
 })
 
+submitBtn.addEventListener('click', () => {
+	const category = document.querySelector('.active')
+	checkScore(category.id)
+})
+
+restartBtn.addEventListener('click', restartQuiz)
+
 theme.addEventListener('click', () => {
-	document.body.classList.toggle('redtheme')
-	console.log('blue')
+	root.classList.toggle('dark-theme')
 })
