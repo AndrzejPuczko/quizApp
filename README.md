@@ -2,11 +2,11 @@
 
 <br />
 <div align="center">
-    <img src="./src/public/logo.webp" alt="Logo" width="140" height="140">
+    <img src="./src/public/logo.png" alt="Logo" width="140" height="140">
 
 <h2 align="center">QUIZ APP</h2>
 <p>I present a simple quiz app. Application made in Vanilla JS technology.</p>
-<p> At the moment there are 4 categories to choose from, but you can easily add new ones. 
+<p> At the moment there are 4 categories to choose, but you can easily add new ones. 
 You can choose day or night mode.</p>
 <p>Good luck ;)</p>
 
