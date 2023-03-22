@@ -25,6 +25,8 @@ const result = document.querySelector('.result')
 const resultText = document.querySelector('.result-text')
 const progressBarText = document.querySelector('.progressbar__text')
 const restartBtn = document.querySelector('#restart')
+const incorrectAnswer = document.querySelector('.result-incorrect-answer')
+const incorrectBtn = document.querySelector('.incorrect-button')
 
 const theme = document.querySelector('#toggle_checkbox')
 const root = document.documentElement
@@ -49,7 +51,7 @@ const loadElements = currentQuizData => {
 	c_text.innerText = currentQuizData.c
 	d_text.innerText = currentQuizData.d
 	questionNrText.textContent = `Pytanie ${currentQuiz + 1} / ${quiz.length}`
-	quiz.length -1 === currentQuiz ? submitBtn.textContent = 'Pokaż wynik' : submitBtn.textContent = 'Kolejne Pytanie'
+	quiz.length - 1 === currentQuiz ? (submitBtn.textContent = 'Pokaż wynik') : (submitBtn.textContent = 'Kolejne Pytanie')
 }
 
 const checkScore = category => {
@@ -57,6 +59,8 @@ const checkScore = category => {
 		if (item.checked) {
 			if (item.id === currentQuizData.correct) {
 				score++
+			} else {
+				saveWrongAnswers(item.id)
 			}
 			currentQuiz++
 			if (currentQuiz < quiz.length) {
@@ -75,6 +79,9 @@ const calcProgressBar = score => {
 }
 
 const showResult = score => {
+	if (score !== quiz.length) {
+		incorrectBtn.style.display = 'block'
+	}
 	calcProgressBar(score)
 	resultText.innerHTML = `Liczba poprawnych odpowiedzi to: <span>${score}</span>`
 	;[restartBtn, result].forEach(item => {
@@ -83,6 +90,19 @@ const showResult = score => {
 	;[quizContainer, submitBtn].forEach(item => {
 		item.style.display = 'none'
 	})
+}
+
+const saveWrongAnswers = item => {
+	let correct = currentQuizData.correct
+	const incorrect = document.createElement('div')
+	incorrect.classList.add('incorrect-answer')
+	incorrect.innerHTML = `<div class="incorrect-answer">
+	<p class="answer-number">Pytanie nr ${currentQuiz + 1}</p>
+	<p>${currentQuizData.question}</p>
+	<p>Twoja odpowiedź: <span class="wrong">${currentQuizData[item]}</span></p>
+	<p>Poprawna odpowiedź: <span class="correct">${currentQuizData[correct]}</span></p>
+  </div>`
+	incorrectAnswer.appendChild(incorrect)
 }
 
 const hideMenu = () => {
@@ -100,10 +120,12 @@ const deselect = () => {
 const restartQuiz = () => {
 	const activeQuiz = document.querySelector('.active')
 	activeQuiz.classList.remove('active')
+	incorrectAnswer.classList.remove('show')
+	incorrectAnswer.innerHTML = ''
 	;[allCategories, headerTitle, mainTitle].forEach(item => {
 		item.style.display = 'block'
 	})
-	;[quizContainer, submitBtn, restartBtn, result].forEach(item => {
+	;[quizContainer, submitBtn, restartBtn, result, incorrectBtn].forEach(item => {
 		item.style.display = 'none'
 	})
 	score = 0
@@ -117,12 +139,13 @@ const restartQuiz = () => {
 		item.classList.add('active')
 	})
 })
-
 submitBtn.addEventListener('click', () => {
 	const category = document.querySelector('.active')
 	checkScore(category.id)
 })
-
+incorrectBtn.addEventListener('click', () => {
+	incorrectAnswer.classList.toggle('show')
+})
 restartBtn.addEventListener('click', restartQuiz)
 
 theme.addEventListener('click', () => {

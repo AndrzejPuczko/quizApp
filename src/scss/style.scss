@@ -383,12 +383,15 @@ body {
 		display: none;
 		flex-direction: column;
 		align-items: center;
+		padding: 5px 10px;
+	
 		font-size: 2rem;
 		font-weight: 500;
 		color: var(--dark-font);
 
 		&-text {
 			margin-bottom: 30px;
+			text-align: center;
 		}
 
 		span {
@@ -459,6 +462,45 @@ body {
 				stroke-dashoffset: var(--progress-bar);
 			}
 		}
+
+		.incorrect-button {
+			display: none;
+			background: var(--main-purple);
+			border-radius: 15px;
+			max-width: 260px;
+			font-size: 1.4rem;
+			font-weight: 600;
+			margin: 0 auto;
+			height: 45px;
+		}
+
+		&-incorrect-answer {
+			padding: 10px 10px;
+			display: none;
+
+			.incorrect-answer {
+				padding: 4px 0;
+				p {
+					font-size: 1.6rem;
+				}
+				span {
+					font-size: 1.7rem;
+				}
+				.answer-number {
+					font-weight: bold;
+					padding-bottom: 5px;
+				}
+				.wrong {
+					color: rgb(218, 13, 13);
+				}
+				.correct {
+					color: rgb(20, 158, 50);
+				}
+			}
+		}
+		.incorrect-button.show, &-incorrect-answer.show {
+			display:block;
+		}
 	}
 
 	.restart-btn {
@@ -467,6 +509,7 @@ body {
 
 		button {
 			display: none;
+			margin-top: 15px;
 			text-align: center;
 			background: url('./../img/next.svg');
 			background-position: center;
