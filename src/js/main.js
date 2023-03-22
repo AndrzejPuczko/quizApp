@@ -1,5 +1,5 @@
 import '../scss/style.scss'
-import { geographyData, mathData, itData, musicData } from './quizData'
+import * as data from './quizData'
 
 const questionEl = document.querySelector('#question')
 const a_text = document.querySelector('#a-text')
@@ -31,13 +31,13 @@ const root = document.documentElement
 
 let currentQuiz = 0
 let score = 0
-let quizLength
+let quiz
 let currentQuizData
 
 const checkCategory = target => {
 	deselect()
-	quizLength = eval(target + 'Data')
-	currentQuizData = eval(target + 'Data[currentQuiz]')
+	quiz = data[target]
+	currentQuizData = quiz[currentQuiz]
 	loadElements(currentQuizData)
 }
 
@@ -48,7 +48,7 @@ const loadElements = currentQuizData => {
 	b_text.innerText = currentQuizData.b
 	c_text.innerText = currentQuizData.c
 	d_text.innerText = currentQuizData.d
-	questionNrText.textContent = `Pytanie ${currentQuiz + 1} / ${quizLength.length}`
+	questionNrText.textContent = `Pytanie ${currentQuiz + 1} / ${quiz.length}`
 }
 
 const checkScore = category => {
@@ -58,7 +58,7 @@ const checkScore = category => {
 				score++
 			}
 			currentQuiz++
-			if (currentQuiz < quizLength.length) {
+			if (currentQuiz < quiz.length) {
 				checkCategory(category)
 			} else {
 				showResult(score)
@@ -68,8 +68,8 @@ const checkScore = category => {
 }
 
 const calcProgressBar = score => {
-	progressBarText.textContent = `${score} / ${quizLength.length}`
-	const progressBar = 440 - (440 * ((100 / quizLength.length) * score)) / 100
+	progressBarText.textContent = `${score} / ${quiz.length}`
+	const progressBar = 440 - (440 * ((100 / quiz.length) * score)) / 100
 	root.style.setProperty('--progress-bar', progressBar)
 }
 

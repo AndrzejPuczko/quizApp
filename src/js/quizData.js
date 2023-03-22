@@ -1,11 +1,11 @@
-export const geographyData = [
+export const geography = [
 	{
 		question: ' Które z poniższych państw ma dostęp do morza?',
 		a: 'Luksemburg',
 		b: 'Macedonia',
 		c: 'Serbia',
 		d: 'Słowenia',
-		img: './../img/quizData/geography1.jpg',
+		img: './quizData/geography1.jpg',
 		correct: 'd',
 	},
 	{
@@ -14,7 +14,7 @@ export const geographyData = [
 		b: 'Karaibskie',
 		c: 'Czerwone',
 		d: 'Koralowe',
-		img: './../img/quizData/geography2.jpg',
+		img: './quizData/geography2.jpg',
 		correct: 'c',
 	},
 	{
@@ -23,7 +23,7 @@ export const geographyData = [
 		b: 'Indonezja',
 		c: 'Kanada',
 		d: 'USA',
-		img: './../img/quizData/geography3.jpg',
+		img: './quizData/geography3.jpg',
 		correct: 'c',
 	},
 	{
@@ -32,19 +32,19 @@ export const geographyData = [
 		b: 'Czarnego',
 		c: 'Białego',
 		d: 'Niebieskiego',
-		img: './../img/quizData/geography4.jpg',
+		img: './quizData/geography4.jpg',
 		correct: 'd',
 	},
 ]
 
-export const mathData = [
+export const math = [
 	{
 		question: 'Jakie jest pole powierzchni kwadratu o boku długości 5 cm?',
 		a: '25 cm',
 		b: '10 cm^2',
 		c: '25 cm^2',
 		d: '20 cm^2',
-		img: './../img/quizData/math1.jpg',
+		img: './quizData/math1.jpg',
 		correct: 'c',
 	},
 	{
@@ -53,7 +53,7 @@ export const mathData = [
 		b: '12',
 		c: '14',
 		d: '44',
-		img: './../img/quizData/math2.jpg',
+		img: './quizData/math2.jpg',
 		correct: 'b',
 	},
 	{
@@ -62,7 +62,7 @@ export const mathData = [
 		b: '5',
 		c: '13',
 		d: '36',
-		img: './../img/quizData/math3.jpg',
+		img: './quizData/math3.jpg',
 		correct: 'd',
 	},
 	{
@@ -71,7 +71,7 @@ export const mathData = [
 		b: '13',
 		c: '8',
 		d: '1',
-		img: './../img/quizData/math4.jpg',
+		img: './quizData/math4.jpg',
 		correct: 'a',
 	},
 	{
@@ -80,19 +80,19 @@ export const mathData = [
 		b: '25 000 g',
 		c: '250 000 g',
 		d: '2 500 000g',
-		img: './../img/quizData/math5.jpg',
+		img: './quizData/math5.jpg',
 		correct: 'c',
 	},
 ]
 
-export const itData = [
+export const it = [
 	{
 		question: 'Do czego używany jest protokół SMTP?',
 		a: 'Przesyłania plików pomiędzy komputerami',
 		b: 'Surfowania w sieci',
 		c: 'Wysyłania poczty e-mail',
 		d: 'Odczytywania daty i godziny',
-		img: './../img/quizData/it1.jpg',
+		img: './quizData/it1.jpg',
 		correct: 'c',
 	},
 	{
@@ -101,7 +101,7 @@ export const itData = [
 		b: 'World Wide Web',
 		c: 'Whole World Web',
 		d: 'Web Wide World',
-		img: './../img/quizData/it2.jpg',
+		img: './quizData/it2.jpg',
 		correct: 'b',
 	},
 	{
@@ -110,7 +110,7 @@ export const itData = [
 		b: 'Klawiaturę, skaner, myszkę',
 		c: 'Płytę główną, drukarkę, procesor',
 		d: 'Żadne z powyższych',
-		img: './../img/quizData/it3.jpg',
+		img: './quizData/it3.jpg',
 		correct: 'b',
 	},
 	{
@@ -119,7 +119,7 @@ export const itData = [
 		b: 'Odświeża. pulpit',
 		c: 'Przenosi na górę strony',
 		d: 'Otwiera pasek START',
-		img: './../img/quizData/it4.jpg',
+		img: './quizData/it4.jpg',
 		correct: 'c',
 	},
 	{
@@ -128,19 +128,19 @@ export const itData = [
 		b: '10 GB',
 		c: '100 GB',
 		d: '1 TB',
-		img: './../img/quizData/it5.jpg',
+		img: './quizData/it5.jpg',
 		correct: 'd',
 	},
 ]
 
-export const musicData = [
+export const music = [
 	{
 		question: 'Jak na początku brzmiała nazwa zespołu "Maanam"?',
 		a: 'Blues Maanam Distortion',
 		b: 'Czas na Maanam',
 		c: 'Fala Dźwięków Maanam',
 		d: 'Maanam Elektryczny Prysznic',
-		img: './../img/quizData/music1.jpg',
+		img: './quizData/music1.jpg',
 		correct: 'd',
 	},
 	{
@@ -149,7 +149,7 @@ export const musicData = [
 		b: 'w Płocku',
 		c: 'w Warszawie',
 		d: 'w Zielonej Górze',
-		img: './../img/quizData/music2.jpg',
+		img: './quizData/music2.jpg',
 		correct: 'a',
 	},
 	{
@@ -158,7 +158,7 @@ export const musicData = [
 		b: 'Gitarzysta zespołu Myslovitz',
 		c: 'Perkusista zespołu T. Love',
 		d: 'Manager zespołu Kombi',
-		img: './../img/quizData/music3.jpg',
+		img: './quizData/music3.jpg',
 		correct: 'c',
 	},
 
@@ -168,7 +168,7 @@ export const musicData = [
 		b: 'Julia',
 		c: 'Katarzyna',
 		d: 'Ewelina',
-		img: './../img/quizData/music4.jpg',
+		img: './quizData/music4.jpg',
 		correct: 'c',
 	},
 	{
@@ -177,7 +177,7 @@ export const musicData = [
 		b: 'Carlos Santana',
 		c: 'Slash',
 		d: 'Jimmy Page',
-		img: './../img/quizData/music5.jpg',
+		img: './quizData/music5.jpg',
 		correct: 'a',
 	},
 ]
