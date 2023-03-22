@@ -49,6 +49,7 @@ const loadElements = currentQuizData => {
 	c_text.innerText = currentQuizData.c
 	d_text.innerText = currentQuizData.d
 	questionNrText.textContent = `Pytanie ${currentQuiz + 1} / ${quiz.length}`
+	quiz.length -1 === currentQuiz ? submitBtn.textContent = 'Pokaż wynik' : submitBtn.textContent = 'Kolejne Pytanie'
 }
 
 const checkScore = category => {
